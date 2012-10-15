@@ -3,31 +3,31 @@
 namespace PhlyMongoTest;
 
 use PhlyMongo\PaginatorAdapter;
-use Zend\Paginator\Paginator;
 
 class PaginatorAdapterTest extends AbstractTestCase
 {
+    public function setUp()
+    {
+        parent::setUp();
+        $this->cursor  = $this->collection->find();
+        $this->adapter = new PaginatorAdapter($this->cursor);
+    }
+
     public function testCountReturnsTotalNumberOfItems()
     {
-        $cursor  = $this->collection->find();
-        $adapter = new PaginatorAdapter($cursor);
-        $this->assertEquals($cursor->count(), $adapter->count());
-        $this->assertGreaterThan(1, $adapter->count());
+        $this->assertEquals($this->cursor->count(), $this->adapter->count());
+        $this->assertGreaterThan(1, $this->adapter->count());
     }
 
     public function testGetItemsReturnsCursor()
     {
-        $cursor  = $this->collection->find();
-        $adapter = new PaginatorAdapter($cursor);
-        $test    = $adapter->getItems(5, 5);
-        $this->assertSame($cursor, $test);
+        $test    = $this->adapter->getItems(5, 5);
+        $this->assertSame($this->cursor, $test);
     }
 
     public function testIteratingReturnedItemsReturnsProperOffsetAndCount()
     {
-        $cursor   = $this->collection->find();
-        $adapter  = new PaginatorAdapter($cursor);
-        $items    = $adapter->getItems(5, 5);
+        $items    = $this->adapter->getItems(5, 5);
         $expected = array_slice($this->items, 5, 5);
         $test     = array();
         foreach ($items as $item) {
