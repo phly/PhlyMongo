@@ -1,0 +1,14 @@
+<?php
+define('ZF2_PATH', getenv('HOME') . '/workspace/zf2/library');
+
+return array(
+    'modules' => array(
+        'PhlyMongo',
+    ),
+    'mongo' => array(
+        'server'         => 'mongodb://localhost:27017',
+        'server_options' => array('connect' => true),
+        'db'             => 'test',
+        'collection'     => 'phly_mongo_test',
+    ),
+);
