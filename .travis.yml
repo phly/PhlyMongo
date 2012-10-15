@@ -9,9 +9,12 @@ php:
   - "5.4"
 
 before_install:
- - curl -s https://getcomposer.org/installer | php -- --quiet
- - php composer.phar install --dev
+ - pecl install mongo
+ - echo "extension=mongo.so" >> `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"`
  - wget http://cs.sensiolabs.org/get/php-cs-fixer.phar
+
+before_script:
+ - composer install --dev
 
 script:
  - phpunit -c test/phpunit.xml
