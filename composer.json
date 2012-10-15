@@ -1,0 +1,33 @@
+{
+    "name": "phly/phly-mongo",
+    "description": "ZF2 Module providing services and paginators surrounding MongoDB",
+    "type": "library",
+    "keywords": [
+        "zf2",
+        "zend",
+        "module",
+        "mongo",
+        "mongodb"
+    ],
+    "homepage": "https://github.com/weierophinney/PhlyMongo",
+    "authors": [
+        {
+            "name": "Matthew Weier O'Phinney",
+            "email": "matthew@weierophinney.net",
+            "homepage": "http://mwop.net/"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zend-paginator": "2.*",
+        "zendframework/zend-stdlib": "2.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "PhlyMongo": "src/"
+        },
+        "classmap": [
+            "./"
+        ]
+    }
+}
