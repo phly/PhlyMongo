@@ -9,8 +9,7 @@ php:
   - "5.4"
 
 before_install:
- - pecl install mongo
- - echo "extension=mongo.so" >> `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"`
+ - ./bin/install-mongo-extension.sh
  - wget http://cs.sensiolabs.org/get/php-cs-fixer.phar
 
 before_script:
