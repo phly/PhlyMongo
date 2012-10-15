@@ -21,13 +21,13 @@
         "php": ">=5.3.3",
         "ext-mongo": "*",
         "zendframework/zend-paginator": "2.*",
+        "zendframework/zend-servicemanager": "2.*",
         "zendframework/zend-stdlib": "2.*"
     },
     "require-dev": {
         "zendframework/zend-loader": "2.*",
         "zendframework/zend-modulemanager": "2.*",
-        "zendframework/zend-mvc": "2.*",
-        "zendframework/zend-servicemanager": "2.*"
+        "zendframework/zend-mvc": "2.*"
     },
     "autoload": {
         "psr-0": {
