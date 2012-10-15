@@ -1,6 +1,8 @@
 PhlyMongo - ZF2 Module for Mongo Integration
 ============================================
 
+[![Build Status](https://secure.travis-ci.org/weierophinney/PhlyMongo.png?branch=master)](http://travis-ci.org/weierophinney/PhlyMongo)
+
 PhlyMongo provides the following to assist with Mongo usage in ZF2:
 
 - Hydrating Mongo resultset
