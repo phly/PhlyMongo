@@ -4,9 +4,9 @@ services:
   - mongodb
 
 php:
-  - 5.3.3
-  - 5.3
-  - 5.4
+  - "5.3.3"
+  - "5.3"
+  - "5.4"
 
 before_install:
  - curl -s https://getcomposer.org/installer | php -- --quiet
