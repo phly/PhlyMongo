@@ -2,35 +2,16 @@
 
 namespace PhlyMongoTest;
 
-use Mongo;
-use MongoCollection;
-use MongoDB;
 use PhlyMongo\HydratingMongoCursor;
-use PHPUnit_Framework_TestCase as TestCase;
 use Zend\Stdlib\Hydrator\ObjectProperty;
 
-class HydratingMongoCursorTest extends TestCase
+class HydratingMongoCursorTest extends AbstractTestCase
 {
     public function setUp()
     {
-        if (!extension_loaded('mongo')) {
-            $this->markTestSkipped('Mongo extension is required to run tests');
-        }
-
-        $services   = Bootstrap::getServiceManager();
-        $config     = $services->get('ApplicationConfig');
-        $config     = $config['mongo'];
-        $mongo      = new Mongo($config['server'], $config['server_options']);
-        $db         = new MongoDB($mongo, $config['db']);
-        $collection = new MongoCollection($db, $config['collection']);
-
-        $this->mongo      = $mongo;
-        $this->db         = $db;
-        $this->collection = $collection;
-
+        parent::setUp();
         $this->hydrator   = new ObjectProperty();
         $this->prototype  = new TestAsset\Foo;
-        $this->seedCollection();
     }
 
     protected function seedCollection()
