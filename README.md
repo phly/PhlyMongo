@@ -39,8 +39,7 @@ git submodule add git://github.com/weierophinney/PhlyMongo vendor/PhlyMongo
 Usage
 -----
 
-Services
-^^^^^^^^
+### Services
 
 In order to remain as flexible as possible, the service factories require that
 you pass information to the constructors. As such, you should typically 
@@ -96,8 +95,7 @@ class Module
 However, if you need to do this, you might just as easily use the native Mongo
 classes.
 
-Hydrating Cursor
-^^^^^^^^^^^^^^^^
+### Hydrating Cursor
 
 The hydrating cursor is useful as a way to map result sets to objects.
 
@@ -126,8 +124,7 @@ foreach ($resultset as $status) {
 }
 ```
 
-Paginator Adapter
-^^^^^^^^^^^^^^^^^
+### Paginator Adapter
 
 The paginator adapter allows you to use a `MongoCursor` with `Zend\Paginator`.
 
@@ -148,8 +145,7 @@ foreach ($paginator as $item) {
 }
 ```
 
-Hydrating Paginator Adapter
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+### Hydrating Paginator Adapter
 
 This builds on the paginator adapter, and simply alters it to accept
 specifically a `PhlyMongo\HydratingMongoCursor` in the constructor, allowing
