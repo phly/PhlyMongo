@@ -104,7 +104,7 @@ prototype object, and you're set:
 
 ```php
 use PhlyMongo\HydratingMongoCursor;
-use Zend\Stdlib\ObjectProperty;
+use Zend\Stdlib\Hydrator\ObjectProperty;
 
 class Status
 {
