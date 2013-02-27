@@ -58,7 +58,7 @@ class Module
         return array('factories' => array(
             'My\Mongo'           => 'PhlyMongo\MongoConnectionFactory',
             'My\MongoDB'         => new MongoDbFactory('my-site', 'My\Mongo'),
-            'My\MongoCollection' => new MongoDbFactory('some-stuff', 'My\MongoDB'),
+            'My\MongoCollection' => new MongoCollectionFactory('some-stuff', 'My\MongoDB'),
         ));
     }
 }
