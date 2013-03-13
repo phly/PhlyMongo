@@ -9,10 +9,10 @@ php:
   - "5.4"
 
 before_install:
- - ./bin/install-mongo-extension.sh
  - wget http://cs.sensiolabs.org/get/php-cs-fixer.phar
 
 before_script:
+ - echo "extension = mongo.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
  - composer install --dev
 
 script:
