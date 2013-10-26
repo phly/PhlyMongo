@@ -29,7 +29,7 @@
         "zendframework/zend-modulemanager": "2.*",
         "zendframework/zend-mvc": "2.*",
         "zendframework/zend-form": "2.*",
-        "zendframework/zend-view": "2.*",
+        "zendframework/zend-view": "2.*"
     },
     "autoload": {
         "psr-0": {
