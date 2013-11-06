@@ -2,7 +2,7 @@
 
 namespace PhlyMongo;
 
-use Mongo;
+use MongoClient;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
@@ -23,6 +23,6 @@ class MongoConnectionFactory implements FactoryInterface
 
     public function createService(ServiceLocatorInterface $services)
     {
-        return new Mongo($this->server, $this->options);
+        return new MongoClient($this->server, $this->options);
     }
 }
