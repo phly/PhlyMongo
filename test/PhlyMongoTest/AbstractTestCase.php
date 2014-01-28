@@ -2,7 +2,6 @@
 
 namespace PhlyMongoTest;
 
-use Mongo;
 use MongoCollection;
 use MongoDB;
 use PhlyMongo\HydratingMongoCursor;
@@ -17,10 +16,15 @@ abstract class AbstractTestCase extends TestCase
             $this->markTestSkipped('Mongo extension is required to run tests');
         }
 
+        $mongoCxnClass = 'Mongo';
+        if (class_exists('MongoClient')) {
+            $mongoCxnClass = 'MongoClient';
+        }
+
         $services   = Bootstrap::getServiceManager();
         $config     = $services->get('ApplicationConfig');
         $config     = $config['mongo'];
-        $mongo      = new Mongo($config['server'], $config['server_options']);
+        $mongo      = new $mongoCxnClass($config['server'], $config['server_options']);
         $db         = new MongoDB($mongo, $config['db']);
         $collection = new MongoCollection($db, $config['collection']);
 

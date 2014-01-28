@@ -8,9 +8,18 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 
 class MongoConnectionFactory implements FactoryInterface
 {
-
+    /**
+     * Server connection string
+     *
+     * @var string
+     */
     protected $server = 'mongodb://localhost:27017';
 
+    /**
+     * Connection options
+     *
+     * @var array
+     */
     protected $options = array(
         'connect' => true
     );
@@ -27,10 +36,11 @@ class MongoConnectionFactory implements FactoryInterface
 
     public function createService(ServiceLocatorInterface $services)
     {
+        // Use MongoClient if available (ext/mongo >= 1.4)
         if (class_exists('MongoClient')) {
             return new MongoClient($this->server, $this->options);
-        } else {
-            return new Mongo($this->server, $this->options);
         }
+
+        return new Mongo($this->server, $this->options);
     }
 }
