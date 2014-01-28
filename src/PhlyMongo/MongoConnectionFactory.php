@@ -8,12 +8,8 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 
 class MongoConnectionFactory implements FactoryInterface
 {
-
     protected $server = 'mongodb://localhost:27017';
-
-    protected $options = array(
-        'connect' => true
-    );
+    protected $options = array('connect' => true);
 
     public function __construct($server = null, array $options = null)
     {
