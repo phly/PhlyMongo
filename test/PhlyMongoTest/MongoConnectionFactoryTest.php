@@ -20,13 +20,22 @@ class MongoConnectionFactoryTest extends TestCase
     {
         $factory = new MongoConnectionFactory();
         $mongo   = $factory->createService($this->services);
-        $this->assertInstanceOf('Mongo', $mongo);
+
+        if (class_exists('MongoClient')) {
+            $this->assertInstanceOf('MongoClient', $mongo);
+        } else {
+            $this->assertInstanceOf('Mongo', $mongo);
+        }
     }
 
     public function testFactoryWillCreateAMongoInstanceBasedOnParameters()
     {
         $factory = new MongoConnectionFactory('mongodb://localhost:27017', array('connect' => false));
         $mongo   = $factory->createService($this->services);
-        $this->assertInstanceOf('Mongo', $mongo);
+        if (class_exists('MongoClient')) {
+            $this->assertInstanceOf('MongoClient', $mongo);
+        } else {
+            $this->assertInstanceOf('Mongo', $mongo);
+        }
     }
 }
