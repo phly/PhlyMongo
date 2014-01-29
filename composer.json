@@ -39,7 +39,7 @@
             "PhlyMongoTest": "test/"
         },
         "classmap": [
-            "./"
+            "Module.php"
         ]
     }
 }
