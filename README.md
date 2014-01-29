@@ -1,7 +1,7 @@
 PhlyMongo - ZF2 Module for Mongo Integration
 ============================================
 
-[![Build Status](https://secure.travis-ci.org/weierophinney/PhlyMongo.png?branch=master)](http://travis-ci.org/weierophinney/PhlyMongo)
+[![Build Status](https://secure.travis-ci.org/phly/PhlyMongo.png?branch=master)](http://travis-ci.org/phly/PhlyMongo)
 
 PhlyMongo provides the following to assist with Mongo usage in ZF2:
 
@@ -33,7 +33,7 @@ php composer.phar install
 Alternately, use git to install this as a submodule:
 
 ```bash
-git submodule add git://github.com/weierophinney/PhlyMongo vendor/PhlyMongo
+git submodule add git://github.com/phly/PhlyMongo vendor/PhlyMongo
 ```
 
 Usage
