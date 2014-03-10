@@ -4,12 +4,35 @@ namespace PhlyMongoTest;
 
 use MongoCollection;
 use MongoDB;
-use PhlyMongo\HydratingMongoCursor;
 use PHPUnit_Framework_TestCase as TestCase;
-use Zend\Stdlib\Hydrator\ObjectProperty;
 
 abstract class AbstractTestCase extends TestCase
 {
+    /**
+     * @var \MongoClient|\Mongo
+     */
+    protected $mongo;
+
+    /**
+     * @var \MongoDB
+     */
+    protected $db;
+
+    /**
+     * @var \MongoCollection
+     */
+    protected $collection;
+
+    /**
+     * @var array
+     */
+    protected $items;
+
+    /**
+     * @var array
+     */
+    protected $authors;
+
     public function setUp()
     {
         if (!extension_loaded('mongo')) {
