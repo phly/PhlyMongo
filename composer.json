@@ -17,6 +17,11 @@
             "homepage": "http://mwop.net/"
         }
     ],
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    },
     "require": {
         "php": ">=5.3.23",
         "ext-mongo": "*",
