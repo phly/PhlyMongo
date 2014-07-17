@@ -2,10 +2,6 @@
 
 namespace PhlyMongo;
 
-use InvalidArgumentException;
-use MongoCursor;
-use Zend\Stdlib\Hydrator\HydratorInterface;
-
 class HydratingPaginatorAdapter extends PaginatorAdapter
 {
     protected $cursor;
