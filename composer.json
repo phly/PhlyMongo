@@ -25,18 +25,19 @@
         "zendframework/zend-stdlib": "2.*"
     },
     "require-dev": {
+        "fabpot/php-cs-fixer": "*@dev",
         "phpunit/phpunit": "~3.7",
         "zendframework/zend-form": "2.*",
-        "zendframework/zend-loader": "2.*",
+        "zendframework/zend-log": "2.*",
         "zendframework/zend-modulemanager": "2.*",
         "zendframework/zend-mvc": "2.*",
         "zendframework/zend-serializer": "2.*",
         "zendframework/zend-view": "2.*"
     },
     "autoload": {
-        "psr-0": {
-            "PhlyMongo": "src/",
-            "PhlyMongoTest": "test/"
+        "psr-4": {
+            "PhlyMongo\\": "src/",
+            "PhlyMongoTest\\": "test/"
         },
         "classmap": [
             "Module.php"
