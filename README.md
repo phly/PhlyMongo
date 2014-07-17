@@ -19,7 +19,7 @@ Simplest is to add the following to `composer.json`:
 {
     "minimum-stability": "dev",
     "require": {
-        "phly/phly-mongo": "dev-master"
+        "phly/phly-mongo": "~1.0-dev"
     }
 }
 ```

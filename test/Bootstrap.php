@@ -1,7 +1,11 @@
 <?php
+/**
+ * @license   http://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
+ * @copyright Copyright (c) 2014 Matthew Weier O'Phinney
+ */
+
 namespace PhlyMongoTest;
 
-use Zend\Loader\AutoloaderFactory;
 use Zend\Mvc\Service\ServiceManagerConfig;
 use Zend\ServiceManager\ServiceManager;
 use Zend\Stdlib\ArrayUtils;
@@ -60,29 +64,11 @@ class Bootstrap
     {
         $vendorPath = static::findParentPath('vendor');
 
-        if (is_readable($vendorPath . '/autoload.php')) {
-            $loader = include $vendorPath . '/autoload.php';
+        if (! is_readable($vendorPath . '/autoload.php')) {
+            throw new RuntimeException('Missing autoloader. Run `php composer.phar install` in the module root.');
         }
 
-        $zf2Path = getenv('ZF2_PATH') ?: (defined('ZF2_PATH') ? ZF2_PATH : (is_dir($vendorPath . '/ZF2/library') ? $vendorPath . '/ZF2/library' : false));
-
-        if (!$zf2Path) {
-            throw new RuntimeException('Unable to load ZF2. Run `php composer.phar install` or define a ZF2_PATH environment variable.');
-        }
-
-        if (isset($loader)) {
-            $loader->add('Zend', $zf2Path . '/Zend');
-        } else {
-            include $zf2Path . '/Zend/Loader/AutoloaderFactory.php';
-            AutoloaderFactory::factory(array(
-                'Zend\Loader\StandardAutoloader' => array(
-                    'autoregister_zf' => true,
-                    'namespaces' => array(
-                        __NAMESPACE__ => __DIR__ . '/' . __NAMESPACE__,
-                    ),
-                ),
-            ));
-        }
+        include $vendorPath . '/autoload.php';
     }
 
     protected static function findParentPath($path)

@@ -1,14 +1,18 @@
 <?php
+/**
+ * @license   http://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
+ * @copyright Copyright (c) 2014 Matthew Weier O'Phinney
+ */
 
 namespace PhlyMongoTest;
 
-use PhlyMongo\MongoCollectionFactory;
+use PhlyMongo\MongoGridFsFactory;
 use PhlyMongo\MongoConnectionFactory;
 use PhlyMongo\MongoDbFactory;
 use PHPUnit_Framework_TestCase as TestCase;
 use Zend\ServiceManager\ServiceManager;
 
-class MongoCollectionFactoryTest extends TestCase
+class MongoGridFsFactoryTest extends TestCase
 {
     public function setUp()
     {
@@ -22,9 +26,9 @@ class MongoCollectionFactoryTest extends TestCase
 
     public function testFactoryCreatesAMongoCollectionInstance()
     {
-        $factory    = new MongoCollectionFactory('test', 'PhlyMongoTest\MongoDB');
+        $factory    = new MongoGridFsFactory('prefix', 'PhlyMongoTest\MongoDB');
         $collection = $factory->createService($this->services);
-        $this->assertInstanceOf('MongoCollection', $collection);
-        $this->assertEquals('test', $collection->getName());
+        $this->assertInstanceOf('MongoGridFs', $collection);
+        $this->assertEquals('prefix.files', $collection->getName());
     }
 }
