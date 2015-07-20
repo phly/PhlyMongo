@@ -33,7 +33,7 @@ class PaginatorAdapterTest extends AbstractTestCase
     {
         $items    = $this->adapter->getItems(5, 5);
         $expected = array_slice($this->items, 5, 5);
-        $test     = array();
+        $test     = [];
         foreach ($items as $item) {
             $test[] = $item;
         }

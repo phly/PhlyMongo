@@ -42,7 +42,7 @@ class RangedPaginatorAdapterTest extends AbstractTestCase
         $expected = array_slice($this->items, 5, 5);
         $adapter  = new RangedPaginatorAdapter($this->cursor, $expected[0]['_id']);
         $items    = $adapter->getItems(5, 5);
-        $test     = array();
+        $test     = [];
         foreach ($items as $item) {
             $test[] = $item;
         }
