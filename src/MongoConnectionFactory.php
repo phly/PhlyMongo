@@ -25,9 +25,9 @@ class MongoConnectionFactory implements FactoryInterface
      *
      * @var array
      */
-    protected $options = array(
+    protected $options = [
         'connect' => true
-    );
+    ];
 
     public function __construct($server = null, array $options = null)
     {

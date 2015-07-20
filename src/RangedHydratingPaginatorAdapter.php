@@ -28,7 +28,7 @@ class RangedHydratingPaginatorAdapter extends RangedPaginatorAdapter
         //offset is never used in range based
         //kept here to satisfy interface
         $composedCursor = $this->cursor->getCursor();
-        $composedCursor->addOption('$min', array('_id' => $this->currentId));
+        $composedCursor->addOption('$min', ['_id' => $this->currentId]);
         $composedCursor->limit($itemCountPerPage);
         return $this->cursor;
     }

@@ -45,7 +45,7 @@ class RangedPaginatorAdapter implements AdapterInterface
     {
         //offset is never used in range based
         //kept here to satisfy interface
-        $this->cursor->addOption('$min', array('_id' => $this->currentId));
+        $this->cursor->addOption('$min', ['_id' => $this->currentId]);
         $this->cursor->limit($itemCountPerPage);
         return $this->cursor;
     }
