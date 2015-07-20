@@ -27,7 +27,8 @@
         "ext-mongo": "*",
         "zendframework/zend-paginator": "2.*",
         "zendframework/zend-servicemanager": "2.*",
-        "zendframework/zend-stdlib": "2.*"
+        "zendframework/zend-stdlib": "2.*",
+        "zendframework/zend-i18n": "2.*"
     },
     "require-dev": {
         "fabpot/php-cs-fixer": "*@dev",
