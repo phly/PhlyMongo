@@ -34,7 +34,7 @@ class MongoConnectionFactoryTest extends TestCase
 
     public function testFactoryWillCreateAMongoInstanceBasedOnParameters()
     {
-        $factory = new MongoConnectionFactory('mongodb://localhost:27017', array('connect' => false));
+        $factory = new MongoConnectionFactory('mongodb://localhost:27017', ['connect' => false]);
         $mongo   = $factory->createService($this->services);
         if (class_exists('MongoClient')) {
             $this->assertInstanceOf('MongoClient', $mongo);

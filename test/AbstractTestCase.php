@@ -65,21 +65,21 @@ abstract class AbstractTestCase extends TestCase
     protected function seedCollection()
     {
         $this->collection->drop();
-        $this->authors = $authors = array(
+        $this->authors = $authors = [
             'Matthew',
             'Mark',
             'Luke',
             'John',
-        );
-        $this->items = array();
+        ];
+        $this->items = [];
         for ($i = 0; $i < 100; $i += 1) {
             $authorIndex = array_rand($authors);
             $title       = uniqid();
-            $data = array(
+            $data = [
                 'title'   => $title,
                 'author'  => $authors[$authorIndex],
                 'content' => str_repeat($title, $i + 1),
-            );
+            ];
             $this->collection->insert($data);
             $this->items[] = $data;
         }

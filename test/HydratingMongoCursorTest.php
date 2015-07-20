@@ -21,20 +21,20 @@ class HydratingMongoCursorTest extends AbstractTestCase
     protected function seedCollection()
     {
         $this->collection->drop();
-        $this->authors = $authors = array(
+        $this->authors = $authors = [
             'Matthew',
             'Mark',
             'Luke',
             'John',
-        );
+        ];
         for ($i = 0; $i < 100; $i += 1) {
             $authorIndex = array_rand($authors);
             $title       = uniqid();
-            $data = array(
+            $data = [
                 'title'   => $title,
                 'author'  => $authors[$authorIndex],
                 'content' => str_repeat($title, $i + 1),
-            );
+            ];
             $this->collection->insert($data);
         }
     }
@@ -43,7 +43,7 @@ class HydratingMongoCursorTest extends AbstractTestCase
     {
         $rootCursor = $this->collection->find();
         $this->setExpectedException('InvalidArgumentException');
-        $cursor = new HydratingMongoCursor($rootCursor, $this->hydrator, array());
+        $cursor = new HydratingMongoCursor($rootCursor, $this->hydrator, []);
     }
 
     public function testRootCursorIsAccessibleAfterInstantiation()
