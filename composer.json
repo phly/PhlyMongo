@@ -26,6 +26,7 @@
     "require": {
         "php": ">=5.3.23",
         "ext-mongo": "*",
+        "zendframework/zend-i18n": ">=2.0,<2.5",
         "zendframework/zend-paginator": ">=2.0,<2.5",
         "zendframework/zend-servicemanager": ">=2.0,<2.5",
         "zendframework/zend-stdlib": ">=2.0,<2.5"
