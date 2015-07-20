@@ -1,4 +1,4 @@
-<?php
+<?php // @codingStandardsIgnoreFile
 /**
  * @license   http://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
  * @copyright Copyright (c) 2014 Matthew Weier O'Phinney
@@ -11,8 +11,8 @@ use Zend\ServiceManager\ServiceManager;
 use Zend\Stdlib\ArrayUtils;
 use RuntimeException;
 
+require __DIR__ . '/../vendor/autoload.php';
 error_reporting(E_ALL | E_STRICT);
-chdir(__DIR__);
 
 class Bootstrap
 {
@@ -36,11 +36,9 @@ class Bootstrap
         }
 
         $zf2ModulePaths  = implode(PATH_SEPARATOR, $zf2ModulePaths) . PATH_SEPARATOR;
-        $zf2ModulePaths .= getenv('ZF2_MODULES_TEST_PATHS') ?: (defined('ZF2_MODULES_TEST_PATHS') ? ZF2_MODULES_TEST_PATHS : '');
+        $zf2ModulePaths .= getenv('ZF2_MODULES_TEST_PATHS') ?: (defined('ZF2_MODULES_TEST_PATHS') ? constant('ZF2_MODULES_TEST_PATHS') : '');
 
-        static::initAutoloader();
-
-        // use ModuleManager to load this module and it's dependencies
+        // use ModuleManager to load this module and dependencies
         $baseConfig = array(
             'module_listener_options' => array(
                 'module_paths' => explode(PATH_SEPARATOR, $zf2ModulePaths),
@@ -60,26 +58,21 @@ class Bootstrap
         return static::$serviceManager;
     }
 
-    protected static function initAutoloader()
-    {
-        $vendorPath = static::findParentPath('vendor');
-
-        if (! is_readable($vendorPath . '/autoload.php')) {
-            throw new RuntimeException('Missing autoloader. Run `php composer.phar install` in the module root.');
-        }
-
-        include $vendorPath . '/autoload.php';
-    }
-
     protected static function findParentPath($path)
     {
-        $dir = __DIR__;
+        $dir         = __DIR__;
         $previousDir = '.';
-        while (!is_dir($dir . '/' . $path)) {
+
+        while (! is_dir($dir . '/' . $path)) {
             $dir = dirname($dir);
-            if ($previousDir === $dir) return false;
+
+            if ($previousDir === $dir) {
+                return false;
+            }
+
             $previousDir = $dir;
         }
+
         return $dir . '/' . $path;
     }
 }
