@@ -55,11 +55,13 @@ class Module
 {
     public function getServiceConfig()
     {
-        return array('factories' => array(
-            'My\Mongo'           => 'PhlyMongo\MongoConnectionFactory',
-            'My\MongoDB'         => new MongoDbFactory('my-site', 'My\Mongo'),
-            'My\MongoCollection' => new MongoCollectionFactory('some-stuff', 'My\MongoDB'),
-        ));
+        return [
+            'factories' => [
+                'My\Mongo'           => 'PhlyMongo\MongoConnectionFactory',
+                'My\MongoDB'         => new MongoDbFactory('my-site', 'My\Mongo'),
+                'My\MongoCollection' => new MongoCollectionFactory('some-stuff', 'My\MongoDB'),
+            ]
+        ];
     }
 }
 ```
@@ -79,15 +81,18 @@ class Module
 {
     public function getServiceConfig()
     {
-        return array('factories' => array(
-            'My\Mongo'           => function ($services) {
-                $config = $services->get('config');
-                $config = $config['my']['mongo'];
-                $factory = new MongoConnectionFactory($config['server'], $config['server_options']);
-                return $factory->createService($services);
-            },
-            // and so on //
-        ));
+        return [
+            'factories' => [
+                'My\Mongo' => function ($services) {
+                    $config  = $services->get('config');
+                    $config  = $config['my']['mongo'];
+                    $factory = new MongoConnectionFactory($config['server'], $config['server_options']);
+
+                    return $factory->createService($services);
+                },
+                // and so on //
+            ]
+        ];
     }
 }
 ```
