@@ -1,6 +1,10 @@
 PhlyMongo - ZF2 Module for Mongo Integration
 ============================================
 
+> :warning: **Archived 2025-08-17**
+> 
+> Use at your own risk.
+
 [![Build Status](https://secure.travis-ci.org/phly/PhlyMongo.png?branch=master)](http://travis-ci.org/phly/PhlyMongo)
 
 PhlyMongo provides the following to assist with Mongo usage in ZF2:
